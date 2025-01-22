@@ -1,0 +1,46 @@
+[package]
+name = "innofile"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+license.workspace = true
+
+[features]
+default = ["sync", "tokio", "hdfs", "s3", "csv", "json", "orc", "parquet"]
+
+# runtime
+sync = []
+tokio = ["dep:async-trait", "dep:futures", "dep:tokio"]
+
+# file system
+hdfs = []
+s3 = ["object_store/aws"]
+object_store = ["dep:object_store", "dep:futures", "dep:tokio"]
+
+# file format
+csv = ["dep:arrow-csv"]
+json = ["dep:arrow-json"]
+orc = ["dep:orc-rust"]
+parquet = ["dep:parquet"]
+
+[dependencies]
+anyhow.workspace = true
+arrow = { workspace = true, features = ["test_utils"] }
+arrow-csv = { workspace = true, optional = true }
+arrow-json = { workspace = true, optional = true }
+async-trait = { workspace = true, optional = true }
+bytes.workspace = true
+clap = { workspace = true, features = ["derive"] }
+fluent-uri.workspace = true
+futures = { workspace = true, optional = true }
+object_store = { workspace = true, optional = true }
+orc-rust = { workspace = true, optional = true }
+parquet = { workspace = true, optional = true, features = ["object_store"] }
+tempfile.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, optional = true, features = [
+    "macros",
+    "rt-multi-thread",
+] }

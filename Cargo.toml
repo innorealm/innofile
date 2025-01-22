@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+authors = ["InnoRealm"]
+edition = "2021"
+description = "InnoFile"
+repository = "https://github.com/innorealm/innofile"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+anyhow = "1.0.95"
+arrow = "53.4.0"
+arrow-csv = "53.4.0"
+arrow-json = "53.4.0"
+async-trait = "0.1.85"
+bytes = "1.9.0"
+clap = "4.5.27"
+fluent-uri = "0.3.2"
+futures = "0.3.31"
+object_store = "0.11.2"
+orc-rust = "0.5.0"
+parquet = "53.4.0"
+tempfile = "3.15.0"
+thiserror = "2.0.11"
+tokio = "1.43.0"
